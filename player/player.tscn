@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://rmhmiailoegk"]
+[gd_scene load_steps=17 format=3 uid="uid://rmhmiailoegk"]
 
 [ext_resource type="Texture2D" uid="uid://c6s4fm5cemty2" path="res://player/Minifantasy_CreaturesElfAnimations.png" id="1_75kf3"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_potau"]
 [ext_resource type="Script" path="res://player/player_animation.gd" id="2_cmyyw"]
+[ext_resource type="PackedScene" uid="uid://brdvx8kt2u57q" path="res://abilities/whip/whip.tscn" id="4_7jdcr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvxvg"]
 radius = 4.12311
@@ -124,3 +125,5 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_8yt5m")
 }
+
+[node name="Whip" parent="." instance=ExtResource("4_7jdcr")]

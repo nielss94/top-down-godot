@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://brdvx8kt2u57q"]
+
+[ext_resource type="Texture2D" uid="uid://lbwloggvdlxq" path="res://abilities/whip/Whip_bleeding.png" id="1_3ysqa"]
+[ext_resource type="Script" path="res://abilities/whip/whip.gd" id="1_5603v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wys3"]
+size = Vector2(17, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ea04f"]
+radius = 28.0
+
+[node name="Whip" type="Node2D"]
+script = ExtResource("1_5603v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_3ysqa")
+hframes = 3
+vframes = 4
+frame = 2
+
+[node name="WhipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhipArea"]
+position = Vector2(8.5, 0.5)
+shape = SubResource("RectangleShape2D_8wys3")
+disabled = true
+debug_color = Color(0, 0.564706, 0.87451, 0.419608)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ea04f")
+debug_color = Color(0, 0.607843, 0.662745, 0.529412)
+
+[connection signal="body_entered" from="WhipArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
