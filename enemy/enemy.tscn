@@ -1,16 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://d28y0kiof0bmk"]
+[gd_scene load_steps=14 format=3 uid="uid://d28y0kiof0bmk"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4rohj"]
 [ext_resource type="Texture2D" uid="uid://c6ansibrkj5b4" path="res://enemy/Minifantasy_CreaturesTrollAnimations.png" id="1_ccg1t"]
+[ext_resource type="Script" path="res://enemy/enemy_animation.gd" id="3_r6s04"]
+[ext_resource type="PackedScene" uid="uid://di2le6jr70arx" path="res://modules/HorizontalFlipComponent.tscn" id="4_jqiyl"]
+
+[sub_resource type="Animation" id="Animation_8gtyl"]
+resource_name = "run"
+length = 0.750013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [272, 273, 274, 275, 276, 277]
+}
+
+[sub_resource type="Animation" id="Animation_5j05i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [272]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_liuv5"]
+_data = {
+"RESET": SubResource("Animation_5j05i"),
+"run": SubResource("Animation_8gtyl")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nppr8"]
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix52q"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ym470"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5yp4i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dmjsj"]
+states/run/node = SubResource("AnimationNodeAnimation_ym470")
+states/run/position = Vector2(527, 100)
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_5yp4i")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ax3vc"]
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_4rohj")
 sightRange = 100
+speed = 45
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 4.0
@@ -22,6 +77,13 @@ avoidance_enabled = true
 texture = ExtResource("1_ccg1t")
 hframes = 16
 vframes = 21
+frame = 272
+script = ExtResource("3_r6s04")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_liuv5")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -32,5 +94,15 @@ scale = Vector2(20, 20)
 
 [node name="Circle" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ix52q")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_dmjsj")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ax3vc")
+
+[node name="HorizontalFlipComponent" parent="." node_paths=PackedStringArray("sprite", "character_body") instance=ExtResource("4_jqiyl")]
+sprite = NodePath("../Sprite2D")
+character_body = NodePath("..")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

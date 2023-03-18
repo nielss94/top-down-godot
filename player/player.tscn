@@ -1,41 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://rmhmiailoegk"]
+[gd_scene load_steps=18 format=3 uid="uid://rmhmiailoegk"]
 
 [ext_resource type="Texture2D" uid="uid://c6s4fm5cemty2" path="res://player/Minifantasy_CreaturesElfAnimations.png" id="1_75kf3"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_potau"]
 [ext_resource type="Script" path="res://player/player_animation.gd" id="2_cmyyw"]
 [ext_resource type="PackedScene" uid="uid://brdvx8kt2u57q" path="res://abilities/whip/whip.tscn" id="4_7jdcr"]
+[ext_resource type="PackedScene" uid="uid://di2le6jr70arx" path="res://modules/HorizontalFlipComponent.tscn" id="5_nkaxf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvxvg"]
 radius = 4.12311
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_47s24"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10o3l"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cogmn"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lj2c1"]
-advance_mode = 2
-advance_condition = &"IsMoving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avjxb"]
-advance_mode = 2
-advance_condition = &"NotIsMoving"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_35a5a"]
-states/End/position = Vector2(897, 90)
-states/Start/position = Vector2(180, 90)
-states/idle/node = SubResource("AnimationNodeAnimation_47s24")
-states/idle/position = Vector2(378, 90)
-states/run/node = SubResource("AnimationNodeAnimation_10o3l")
-states/run/position = Vector2(613, 90)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_cogmn"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_lj2c1"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_avjxb")]
-graph_offset = Vector2(-42, -65)
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_a3cp2"]
 
 [sub_resource type="Animation" id="Animation_xkags"]
 length = 0.001
@@ -95,12 +67,55 @@ _data = {
 "run": SubResource("Animation_e8x7y")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_47s24"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10o3l"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cogmn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lj2c1"]
+advance_mode = 2
+advance_condition = &"IsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avjxb"]
+advance_mode = 2
+advance_condition = &"NotIsMoving"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_35a5a"]
+states/End/position = Vector2(897, 90)
+states/Start/position = Vector2(180, 90)
+states/idle/node = SubResource("AnimationNodeAnimation_47s24")
+states/idle/position = Vector2(378, 90)
+states/run/node = SubResource("AnimationNodeAnimation_10o3l")
+states/run/position = Vector2(613, 90)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_cogmn"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_lj2c1"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_avjxb")]
+graph_offset = Vector2(-42, -65)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_a3cp2"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_potau")
-speed = 100.0
+speed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pvxvg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8yt5m")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_35a5a")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_callback = 0
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_a3cp2")
+parameters/conditions/IsMoving = false
+parameters/conditions/NotIsMoving = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -111,19 +126,8 @@ vframes = 24
 frame = 192
 script = ExtResource("2_cmyyw")
 
-[node name="AnimationTree" type="AnimationTree" parent="Sprite2D"]
-tree_root = SubResource("AnimationNodeStateMachine_35a5a")
-anim_player = NodePath("../AnimationPlayer")
-active = true
-process_callback = 0
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_a3cp2")
-parameters/conditions/IsMoving = false
-parameters/conditions/NotIsMoving = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_8yt5m")
-}
-
 [node name="Whip" parent="." instance=ExtResource("4_7jdcr")]
+
+[node name="HorizontalFlipComponent" parent="." node_paths=PackedStringArray("sprite", "character_body") instance=ExtResource("5_nkaxf")]
+sprite = NodePath("../Sprite2D")
+character_body = NodePath("..")

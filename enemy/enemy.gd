@@ -3,10 +3,10 @@ class_name Enemy
 
 @onready var navigation_agent = $NavigationAgent2D
 @export var sightRange = 20
+@export var speed = 20
 var target: Player
-
-
 var in_range: bool
+@export var direction = Vector2.ZERO
 
 func _ready():
 	pass
@@ -27,8 +27,8 @@ func _physics_process(delta):
 	navigation_agent.set_target_position(target.position)
 	
 	var next = navigation_agent.get_next_path_position()
-	var move_direction = position.direction_to(next)
-	velocity = move_direction * 50
+	direction = position.direction_to(next)
+	velocity = direction * speed
 	
 	navigation_agent.set_velocity(velocity)
 	
@@ -39,5 +39,5 @@ func set_target(target: Player):
 	
 
 func _on_area_2d_body_entered(body):
-	if body.name == 'Player':
+	if body is Player:
 		set_target(body)

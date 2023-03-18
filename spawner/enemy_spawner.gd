@@ -10,7 +10,7 @@ var enemy = preload("res://enemy/enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn()
+	pass
 	
 func spawn():
 	var new_enemy = enemy.instantiate()
@@ -19,6 +19,6 @@ func spawn():
 	
 	add_child(new_enemy)
 
-	await get_tree().create_timer(2.0).timeout
-	
+
+func _on_timer_timeout():
 	spawn()
