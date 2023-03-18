@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var sprite: Sprite2D
 @export var character_body: CharacterBody2D

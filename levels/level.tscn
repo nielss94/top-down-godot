@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/level.gd" id="1_vwhxh"]
 [ext_resource type="PackedScene" uid="uid://dtku54l5umja0" path="res://camera/camera.tscn" id="2_41dvi"]
 [ext_resource type="PackedScene" path="res://tiles/tile_map.tscn" id="3_66qso"]
-[ext_resource type="PackedScene" uid="uid://rmhmiailoegk" path="res://player/player.tscn" id="4_vmi4i"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="4_vmi4i"]
 [ext_resource type="PackedScene" uid="uid://dilrc3jdtgyfe" path="res://spawner/enemy_spawner.tscn" id="5_15rgq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1svcl"]

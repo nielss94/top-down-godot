@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://d28y0kiof0bmk"]
+[gd_scene load_steps=14 format=3 uid="uid://cmxx2na20lxdw"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4rohj"]
 [ext_resource type="Texture2D" uid="uid://c6ansibrkj5b4" path="res://enemy/Minifantasy_CreaturesTrollAnimations.png" id="1_ccg1t"]
 [ext_resource type="Script" path="res://enemy/enemy_animation.gd" id="3_r6s04"]
-[ext_resource type="PackedScene" uid="uid://di2le6jr70arx" path="res://modules/HorizontalFlipComponent.tscn" id="4_jqiyl"]
+[ext_resource type="PackedScene" path="res://modules/horizontal_flip/horizontal_flip.tscn" id="4_n2mab"]
 
 [sub_resource type="Animation" id="Animation_8gtyl"]
 resource_name = "run"
@@ -101,7 +101,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ax3vc")
 
-[node name="HorizontalFlipComponent" parent="." node_paths=PackedStringArray("sprite", "character_body") instance=ExtResource("4_jqiyl")]
+[node name="HorizontalFlipComponent" parent="." node_paths=PackedStringArray("sprite", "character_body") instance=ExtResource("4_n2mab")]
 sprite = NodePath("../Sprite2D")
 character_body = NodePath("..")
 
