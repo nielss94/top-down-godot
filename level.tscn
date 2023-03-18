@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmub1btqpa5gy"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_4ty6g"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="1_ci5ln"]
+[ext_resource type="PackedScene" uid="uid://c80m347ui1682" path="res://player.tscn" id="1_qskcd"]
+[ext_resource type="PackedScene" uid="uid://spxtvyu6rkc0" path="res://tilemap/tile_map.tscn" id="2_0ljpa"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1svcl"]
+vertices = PackedVector2Array(11, 218, 156, 72, 232, 51, 249, 51, 320, 220, 200, 50, 218, 50, 184, 51, 101, 16, 102, 72, 88, 51, 88, 33, 325, 18, 249, 33, 323, -10, 25, 51, 41, 51, 9, 51, -237, 210, -242, 75, 232, 33, 217, 33, 185, 34, 200, 33, 168, 51, 156, 16, 168, 34, -245, -21, 9, 33, 25, 33, -245, -133, 27, -134, 316, -134, 72, 51, 57, 51, 72, 33, 57, 33, 41, 33)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 2, 1, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 4, 3, 13, 14), PackedInt32Array(9, 1, 0), PackedInt32Array(9, 0, 15, 16), PackedInt32Array(17, 15, 0, 18, 19), PackedInt32Array(20, 2, 6, 21), PackedInt32Array(22, 23, 5, 7), PackedInt32Array(24, 7, 1), PackedInt32Array(24, 1, 25, 26), PackedInt32Array(17, 19, 27, 28), PackedInt32Array(29, 28, 27, 30, 31, 32, 8), PackedInt32Array(32, 14, 13, 20), PackedInt32Array(32, 20, 21), PackedInt32Array(32, 21, 23), PackedInt32Array(22, 26, 25, 32, 23), PackedInt32Array(33, 10, 9), PackedInt32Array(33, 9, 34), PackedInt32Array(35, 33, 34, 36), PackedInt32Array(8, 11, 35), PackedInt32Array(32, 25, 8), PackedInt32Array(8, 35, 36), PackedInt32Array(16, 34, 9), PackedInt32Array(37, 16, 15, 29), PackedInt32Array(37, 29, 8), PackedInt32Array(37, 8, 36)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-245, -133, 27, -134, 316, -134, 323, -10, 325, 18, 320, 220, 11, 218, -237, 210, -242, 75, -245, -21), PackedVector2Array(101, 16, 156, 16, 156, 72, 102, 72), PackedVector2Array(9, 33, 25, 33, 25, 51, 9, 51), PackedVector2Array(41, 33, 57, 33, 57, 51, 41, 51), PackedVector2Array(72, 33, 88, 33, 88, 51, 72, 51), PackedVector2Array(168, 34, 185, 34, 184, 51, 168, 51), PackedVector2Array(200, 33, 217, 33, 218, 50, 200, 50), PackedVector2Array(232, 33, 249, 33, 249, 51, 232, 51)])
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_4ty6g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+script = ExtResource("1_ci5ln")
+follow_speed = 2
+
+[node name="Player" parent="." instance=ExtResource("1_qskcd")]
+position = Vector2(-42, 27)
+
+[node name="TileMap" parent="." instance=ExtResource("2_0ljpa")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-9, -2)
+navigation_polygon = SubResource("NavigationPolygon_1svcl")

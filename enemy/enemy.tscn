@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://d28y0kiof0bmk"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4rohj"]
+[ext_resource type="Texture2D" uid="uid://c6ansibrkj5b4" path="res://enemy/Minifantasy_CreaturesTrollAnimations.png" id="1_ccg1t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nppr8"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix52q"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_4rohj")
+sightRange = 100
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+path_max_distance = 20.0
+avoidance_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ccg1t")
+hframes = 16
+vframes = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_nppr8")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(20, 20)
+
+[node name="Circle" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ix52q")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
