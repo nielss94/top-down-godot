@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dilrc3jdtgyfe"]
+
+[ext_resource type="Script" path="res://spawner/enemy_spawner.gd" id="1_s7j7e"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_s7j7e")
+minX = -230.0
+maxX = 230.0
+minY = -120.0
+maxY = 190.0

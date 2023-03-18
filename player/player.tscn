@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c80m347ui1682"]
+[gd_scene load_steps=16 format=3 uid="uid://rmhmiailoegk"]
 
-[ext_resource type="Texture2D" uid="uid://c6s4fm5cemty2" path="res://Minifantasy_CreaturesElfAnimations.png" id="1_75kf3"]
-[ext_resource type="Script" path="res://player.gd" id="1_potau"]
-[ext_resource type="Script" path="res://player_animation.gd" id="2_cmyyw"]
+[ext_resource type="Texture2D" uid="uid://c6s4fm5cemty2" path="res://player/Minifantasy_CreaturesElfAnimations.png" id="1_75kf3"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_potau"]
+[ext_resource type="Script" path="res://player/player_animation.gd" id="2_cmyyw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvxvg"]
 radius = 4.12311
