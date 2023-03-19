@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bdqh2ld3geve0"]
+
+[ext_resource type="Script" path="res://item/equipment.gd" id="1_pd7i3"]
+[ext_resource type="Texture2D" uid="uid://cuyxsp0t5pcne" path="res://item/equipment/wooden_helmet.png" id="2_q2mr3"]
+
+[resource]
+script = ExtResource("1_pd7i3")
+type = 0
+strength = 10
+intellect = 0
+dexterity = 15
+luck = 0
+name = "Wooden Helmet"
+description = "It could defend you from a bully."
+sprite = ExtResource("2_q2mr3")
+stackable = false

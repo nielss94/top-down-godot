@@ -1,21 +1,6 @@
-extends Resource
-class_name Item
-
-enum EquipmentType {
-	Helmet,
-	Armor,
-	Leggings,
-	Boots,
-	Weapon,
-	Shield
-}
+class_name Item extends Resource
 
 @export var name: String
 @export var description: String
-@export var type: EquipmentType
-
-@export_category("Stats")
-@export var strength: int
-@export var intellect: int
-@export var dexterity: int
-@export var luck: int
+@export var sprite: Texture2D
+@export var stackable: bool = false

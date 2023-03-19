@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://cxp4cclw05np3"]
+
+[ext_resource type="Script" path="res://item/equipment.gd" id="1_u4h3l"]
+[ext_resource type="Texture2D" uid="uid://nk1ffvtsk8hh" path="res://item/equipment/wooden_armor.png" id="2_gacb6"]
+
+[resource]
+script = ExtResource("1_u4h3l")
+type = 1
+strength = 10
+intellect = 0
+dexterity = 15
+luck = 0
+name = "Wooden Armor"
+description = "It could defend you from a bully."
+sprite = ExtResource("2_gacb6")
+stackable = false

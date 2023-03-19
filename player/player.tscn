@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://caafghdha1d6g"]
+[gd_scene load_steps=20 format=3 uid="uid://caafghdha1d6g"]
 
 [ext_resource type="Texture2D" uid="uid://c6s4fm5cemty2" path="res://player/Minifantasy_CreaturesElfAnimations.png" id="1_75kf3"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_potau"]
 [ext_resource type="Script" path="res://player/player_animation.gd" id="2_cmyyw"]
+[ext_resource type="Resource" uid="uid://d2ap1mcpp248e" path="res://inventory/inventory.tres" id="2_e52fn"]
 [ext_resource type="PackedScene" uid="uid://brdvx8kt2u57q" path="res://abilities/whip/whip.tscn" id="4_7jdcr"]
 [ext_resource type="PackedScene" uid="uid://b4xesnkcv8di6" path="res://modules/horizontal_flip/horizontal_flip.tscn" id="5_nkaxf"]
 [ext_resource type="Script" path="res://modules/stats/stats.gd" id="6_fbhyx"]
@@ -99,6 +100,7 @@ graph_offset = Vector2(-42, -65)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_potau")
+inventory = ExtResource("2_e52fn")
 speed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
