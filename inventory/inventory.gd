@@ -15,6 +15,7 @@ func add(item: Item):
 		for s in slots:
 			if not s.item:
 				slot = s
+				break
 				
 	if not slot:
 		print("inventory is full")

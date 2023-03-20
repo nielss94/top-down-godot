@@ -16,4 +16,3 @@ func toggle_inventory():
 
 func player_inventory_changed():
 	inventory_interface.set_player_inventory(player.inventory)
-	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5fyjra4cp1nt"]
+[gd_scene load_steps=10 format=3 uid="uid://b5fyjra4cp1nt"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_vwhxh"]
 [ext_resource type="PackedScene" uid="uid://dtku54l5umja0" path="res://camera/camera.tscn" id="2_41dvi"]
 [ext_resource type="PackedScene" path="res://tiles/tile_map.tscn" id="3_66qso"]
 [ext_resource type="PackedScene" uid="uid://caafghdha1d6g" path="res://player/player.tscn" id="4_vmi4i"]
 [ext_resource type="PackedScene" uid="uid://dilrc3jdtgyfe" path="res://spawner/enemy_spawner.tscn" id="5_15rgq"]
+[ext_resource type="Resource" uid="uid://d2ap1mcpp248e" path="res://inventory/inventory.tres" id="5_mpswh"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="6_fs12t"]
 [ext_resource type="PackedScene" uid="uid://df8ndsa76tod4" path="res://inventory/ui/inventory.tscn" id="6_keq6h"]
 
@@ -26,6 +27,7 @@ navigation_polygon = SubResource("NavigationPolygon_1svcl")
 
 [node name="Player" parent="." instance=ExtResource("4_vmi4i")]
 position = Vector2(44, 112)
+inventory = ExtResource("5_mpswh")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_15rgq")]
 
