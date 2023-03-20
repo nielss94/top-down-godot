@@ -22,3 +22,4 @@ func add(item: Item):
 		return
 	
 	slot.add_item(item)
+	Events.player_inventory_changed.emit()

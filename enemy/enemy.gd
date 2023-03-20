@@ -7,6 +7,7 @@ class_name Enemy
 var target: Player
 var in_range: bool
 @export var direction = Vector2.ZERO
+@onready var health_component: Health = $HealthComponent
 
 func _ready():
 	pass
@@ -36,8 +37,15 @@ func _physics_process(delta):
 
 func set_target(target: Player):
 	self.target = target
-	
+
+func take_damage(damage: int):
+	health_component.lose(damage)
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		set_target(body)
+
+
+func _on_health_component_health_zero():
+	Events.enemy_died.emit(position)
+	queue_free()

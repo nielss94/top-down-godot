@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmxx2na20lxdw"]
+[gd_scene load_steps=15 format=3 uid="uid://cmxx2na20lxdw"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4rohj"]
 [ext_resource type="Texture2D" uid="uid://c6ansibrkj5b4" path="res://enemy/Minifantasy_CreaturesTrollAnimations.png" id="1_ccg1t"]
 [ext_resource type="Script" path="res://enemy/enemy_animation.gd" id="3_r6s04"]
 [ext_resource type="PackedScene" uid="uid://b4xesnkcv8di6" path="res://modules/horizontal_flip/horizontal_flip.tscn" id="4_n2mab"]
+[ext_resource type="PackedScene" uid="uid://d23j5vluvvwnv" path="res://components/health/health_component.tscn" id="5_n1nmx"]
 
 [sub_resource type="Animation" id="Animation_5j05i"]
 length = 0.001
@@ -105,4 +106,9 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ax3vc")
 sprite = NodePath("../Sprite2D")
 character_body = NodePath("..")
 
+[node name="HealthComponent" parent="." instance=ExtResource("5_n1nmx")]
+currentHealth = 100
+maxHealth = 100
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="health_zero" from="HealthComponent" to="." method="_on_health_component_health_zero"]

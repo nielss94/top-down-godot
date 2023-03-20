@@ -7,12 +7,9 @@ extends Node2D
 
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory)
-	player.inventory_changed.connect(player_inventory_changed)
-	inventory_interface.set_player_inventory(player.inventory)
+	inventory_interface.set_player_inventory(player.inventory_component.inventory)
 	camera.player = player
 
 func toggle_inventory():
 	inventory_interface.visible = not inventory_interface.visible
 
-func player_inventory_changed():
-	inventory_interface.set_player_inventory(player.inventory)

@@ -37,7 +37,7 @@ func hit():
 
 func _on_area_2d_body_entered(body):
 	if body is Enemy:
-		body.queue_free()
+		body.take_damage(100)
 
 func _on_detection_area_body_entered(body):
 	if body is Enemy:

@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://julmk5r85rfi"]
+
+[ext_resource type="Script" path="res://loot_manager/loot_manager.gd" id="1_bxb7y"]
+[ext_resource type="Resource" uid="uid://cxp4cclw05np3" path="res://item/equipment/wooden_armor.tres" id="2_2a1nw"]
+[ext_resource type="Resource" uid="uid://bdqh2ld3geve0" path="res://item/equipment/wooden_helmet.tres" id="3_32th4"]
+
+[node name="LootManager" type="Node"]
+script = ExtResource("1_bxb7y")
+items = Array[Resource("res://item/item.gd")]([ExtResource("2_2a1nw"), ExtResource("3_32th4")])
