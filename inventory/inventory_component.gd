@@ -9,3 +9,6 @@ func _process(delta):
 
 func add(item: Item):
 	inventory.add(item)
+
+func remove(item: Item):
+	inventory.remove(item)

@@ -16,3 +16,7 @@ func add_item(i: Item):
 	if item && item.name == i.name:
 		quantity += 1
 	item = i
+
+func remove_item(i: Item):
+	item = null
+	quantity = 0

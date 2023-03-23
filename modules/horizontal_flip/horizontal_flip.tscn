@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4xesnkcv8di6"]
-
-[ext_resource type="Script" path="res://modules/horizontal_flip/horizontal_flip_component.gd" id="1_m6xk5"]
-
-[node name="HorizontalFlipComponent" type="Node"]
-script = ExtResource("1_m6xk5")

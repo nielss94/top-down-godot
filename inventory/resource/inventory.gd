@@ -2,6 +2,19 @@ class_name Inventory extends Resource
 
 @export var slots: Array[Slot]
 
+func remove(item: Item):
+	for s in slots:
+		if not s:
+			continue
+		
+		if not s.item:
+			continue
+			
+		if s.item == item:
+			s.remove_item(item)
+			Events.player_inventory_changed.emit()
+			return
+
 func add(item: Item):
 	var slot: Slot
 	for s in slots:

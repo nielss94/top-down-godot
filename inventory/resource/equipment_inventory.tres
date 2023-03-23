@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=10 format=3 uid="uid://ccbwg2whn1dvp"]
+
+[ext_resource type="Script" path="res://inventory/resource/inventory.gd" id="1_nem2e"]
+[ext_resource type="Script" path="res://inventory/resource/slot.gd" id="2_mnmv0"]
+[ext_resource type="Resource" uid="uid://cxp4cclw05np3" path="res://item/equipment/wooden_armor.tres" id="3_g8nmm"]
+
+[sub_resource type="Resource" id="Resource_7x3vj"]
+script = ExtResource("2_mnmv0")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ryriy"]
+script = ExtResource("2_mnmv0")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_632rc"]
+script = ExtResource("2_mnmv0")
+item = ExtResource("3_g8nmm")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ysm5x"]
+script = ExtResource("2_mnmv0")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ecbtt"]
+script = ExtResource("2_mnmv0")
+item = ExtResource("3_g8nmm")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_bwf3x"]
+script = ExtResource("2_mnmv0")
+quantity = 1
+
+[resource]
+script = ExtResource("1_nem2e")
+slots = Array[ExtResource("2_mnmv0")]([SubResource("Resource_7x3vj"), SubResource("Resource_ryriy"), SubResource("Resource_632rc"), SubResource("Resource_ysm5x"), SubResource("Resource_ecbtt"), SubResource("Resource_bwf3x")])

@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://camera/camera.gd" id="1_7hdwn"]
 
 [node name="Camera2D" type="Camera2D"]
-zoom = Vector2(4, 4)
+zoom = Vector2(2.5, 2.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 40.0
 script = ExtResource("1_7hdwn")
 follow_speed = 2

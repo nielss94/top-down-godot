@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ropc57uhmoov"
-path="res://.godot/imported/tilemap_packed.png-b5cec5790ef2b68249460fb970c052c5.ctex"
+uid="uid://c3dm1h5qvj4v3"
+path="res://.godot/imported/orc_purple_16x24.png-be5629e5167be3af70a4473dbf279866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/tilemap_packed.png"
-dest_files=["res://.godot/imported/tilemap_packed.png-b5cec5790ef2b68249460fb970c052c5.ctex"]
+source_file="res://tiles/orc_purple_16x24.png"
+dest_files=["res://.godot/imported/orc_purple_16x24.png-be5629e5167be3af70a4473dbf279866.ctex"]
 
 [params]
 
