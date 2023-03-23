@@ -1,14 +1,13 @@
 class_name InventoryComponent extends Node
 
-@export var inventory: Inventory
+signal inventory_changed
 
-func _process(delta):
-	if Input.is_action_just_pressed("L"):
-		var helmet = load("res://item/equipment/wooden_helmet.tres")
-		inventory.add(helmet)
+@export var inventory: Inventory
 
 func add(item: Item):
 	inventory.add(item)
+	inventory_changed.emit()
 
 func remove(item: Item):
 	inventory.remove(item)
+	inventory_changed.emit()

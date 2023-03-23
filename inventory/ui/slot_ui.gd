@@ -2,10 +2,10 @@ class_name SlotUI extends Panel
 
 signal right_clicked(slot: Slot)
 
-var slot: Slot
 @onready var texture_rect = $MarginContainer/TextureRect
 @onready var quantity_label = $QuantityLabel
 
+var slot: Slot
 var hovering: bool = false
 
 func _process(delta):

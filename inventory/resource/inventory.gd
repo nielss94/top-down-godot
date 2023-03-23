@@ -12,7 +12,6 @@ func remove(item: Item):
 			
 		if s.item == item:
 			s.remove_item(item)
-			Events.player_inventory_changed.emit()
 			return
 
 func add(item: Item):
@@ -35,4 +34,3 @@ func add(item: Item):
 		return
 	
 	slot.add_item(item)
-	Events.player_inventory_changed.emit()

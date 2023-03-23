@@ -1,26 +1,24 @@
 class_name Player extends CharacterBody2D
 
-signal toggle_inventory
-signal attack
-
 @onready var inventory_component: InventoryComponent = $InventoryComponent
-@onready var equipment_inventory_component = $EquipmentInventoryComponent
+@onready var equipment_inventory_component: EquipmentInventoryComponent = $EquipmentInventoryComponent
 
 @onready var interaction_area: Interaction = $InteractionArea
-@onready var stats = $Stats
+
+@onready var stats: Stats = $Stats
 
 @export var speed = 300.0
 @export var direction = Vector2.ZERO
 
 func _ready():
 	Events.pickup_item.connect(pickup_item)
-	Events.unequip_item.connect(unequip_item)
+	Events.player_inventory_init.emit(inventory_component.inventory)
 
 func _process(delta):
 	direction = Input.get_vector("left", "right", "up", "down")
 	
 	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
+		Events.toggle_inventory.emit()
 		
 	if Input.is_action_just_pressed("interact"):
 		interaction_area.interact()
@@ -31,6 +29,10 @@ func _physics_process(delta):
 	
 func pickup_item(item: Item):
 	inventory_component.add(item)
-	
-func unequip_item(item: Item):
-	equipment_inventory_component.remove(item)
+
+func _on_inventory_component_inventory_changed():
+	Events.player_inventory_changed.emit()
+
+func _on_equipment_inventory_component_equipment_inventory_changed():
+	Events.player_equipment_inventory_changed.emit(equipment_inventory_component.inventory)
+	stats.set_stats(equipment_inventory_component.inventory.calculate_stats())

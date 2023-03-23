@@ -1,6 +1,6 @@
 class_name Equipment extends Item
 
-enum EquipmentType {
+enum Type {
 	Helmet,
 	Armor,
 	Leggings,
@@ -9,7 +9,7 @@ enum EquipmentType {
 	Shield
 }
 
-@export var type: EquipmentType
+@export var type: Type	
 
 @export_category("Stats")
 @export var strength: int

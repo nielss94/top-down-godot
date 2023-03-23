@@ -1,13 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbxgg620b0mj2"]
+[gd_scene load_steps=4 format=3 uid="uid://bbxgg620b0mj2"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_vwhxh"]
-[ext_resource type="PackedScene" uid="uid://dtku54l5umja0" path="res://camera/camera.tscn" id="2_41dvi"]
 [ext_resource type="PackedScene" uid="uid://bhl5runkgfx1n" path="res://tiles/tile_map.tscn" id="3_66qso"]
-[ext_resource type="PackedScene" uid="uid://c3c3xsylfnmmb" path="res://player/player.tscn" id="4_vmi4i"]
 [ext_resource type="PackedScene" uid="uid://dilrc3jdtgyfe" path="res://spawner/enemy_spawner.tscn" id="5_15rgq"]
-[ext_resource type="PackedScene" uid="uid://df8ndsa76tod4" path="res://inventory/ui/inventory.tscn" id="6_keq6h"]
-[ext_resource type="Script" path="res://inventory/ui/inventory_interface.gd" id="7_4c1at"]
-[ext_resource type="PackedScene" uid="uid://julmk5r85rfi" path="res://loot_manager/loot_manager.tscn" id="8_nnesk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1svcl"]
 vertices = PackedVector2Array(32, 24, 386, 25, 387, 286, 32, 283)
@@ -15,7 +9,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(32, 24, 386, 25, 387, 286, 32, 283)])
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_vwhxh")
 
 [node name="TileMap" parent="." instance=ExtResource("3_66qso")]
 
@@ -23,54 +16,11 @@ script = ExtResource("1_vwhxh")
 position = Vector2(-9, -2)
 navigation_polygon = SubResource("NavigationPolygon_1svcl")
 
-[node name="Player" parent="." instance=ExtResource("4_vmi4i")]
-position = Vector2(44, 112)
-
-[node name="Camera2D" parent="Player" instance=ExtResource("2_41dvi")]
-zoom = Vector2(3.5, 3.5)
-limit_left = 0
-limit_top = -30
-limit_right = 400
-limit_bottom = 300
-limit_smoothed = false
-position_smoothing_enabled = false
-position_smoothing_speed = 200.0
-
 [node name="EnemySpawner" parent="." instance=ExtResource("5_15rgq")]
 minX = 26.0
 maxX = 375.0
 minY = 23.0
 maxY = 280.0
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="InventoryInterface" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_4c1at")
-
-[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("6_keq6h")]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="EquipmentInventory" parent="UI/InventoryInterface" instance=ExtResource("6_keq6h")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = 0.0
-grow_horizontal = 0
-is_equipment_inventory = true
-
-[node name="LootManager" parent="." instance=ExtResource("8_nnesk")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.43

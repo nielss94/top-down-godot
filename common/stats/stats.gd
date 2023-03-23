@@ -1,16 +1,45 @@
 extends Node
 class_name Stats
 
-@export var strength: int = 10
-@export var intellect: int = 10
-@export var dexterity: int = 10
-@export var luck: int = 10
+@export var strength: int = 0
+@export var intellect: int = 0
+@export var dexterity: int = 0
+@export var luck: int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func set_stats(stats: Stats) -> void:
+	strength = stats.strength
+	intellect = stats.intellect
+	dexterity = stats.dexterity
+	luck = stats.luck
 
+func with_strength(amount: int) -> Stats:
+	strength = amount
+	return self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func add_strength(amount: int) -> Stats:
+	strength += amount
+	return self
+
+func with_intellect(amount: int) -> Stats:
+	intellect = amount
+	return self
+
+func add_intellect(amount: int) -> Stats:
+	intellect += amount
+	return self
+
+func with_dexterity(amount: int) -> Stats:
+	dexterity = amount
+	return self
+
+func add_dexterity(amount: int) -> Stats:
+	dexterity += amount
+	return self
+
+func with_luck(amount: int) -> Stats:
+	luck = amount
+	return self
+
+func add_luck(amount: int) -> Stats:
+	luck += amount
+	return self

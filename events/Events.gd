@@ -1,9 +1,10 @@
 extends Node
 
-signal enemy_died(position)
+# inventory
+signal toggle_inventory
+signal player_inventory_init(inventory: Inventory)
 signal player_inventory_changed
-signal pickup_item(item)
+signal player_equipment_inventory_changed(equipment_inventory: EquipmentInventory)
 
-signal equip_item(equipment)
-signal unequip_item(equipment)
-signal equipment_inventory_changed
+signal pickup_item(item)
+signal enemy_died(position)

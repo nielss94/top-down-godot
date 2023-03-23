@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://i1ihxgvo8ego"]
+[gd_scene load_steps=2 format=3 uid="uid://djiyrnncqjost"]
 
-[ext_resource type="Script" path="res://inventory/ui/slot.gd" id="1_4ihfn"]
+[ext_resource type="Script" path="res://inventory/ui/slot_ui.gd" id="1_a531u"]
 
 [node name="Slot" type="Panel"]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_4ihfn")
+script = ExtResource("1_a531u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(64, 64)
