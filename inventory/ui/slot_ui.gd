@@ -9,8 +9,8 @@ var slot: Slot
 var hovering: bool = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("right_mouse") and hovering:
-		right_clicked.emit(self)
+	if Input.is_action_just_pressed("right_mouse") and hovering and slot.item and slot.item is Equipment:
+		right_clicked.emit(slot)
 
 func set_slot(slot: Slot):
 	self.slot = slot

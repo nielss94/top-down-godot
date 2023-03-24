@@ -13,6 +13,7 @@ class_name Player extends CharacterBody2D
 func _ready():
 	Events.pickup_item.connect(pickup_item)
 	Events.player_inventory_init.emit(inventory_component.inventory)
+	Events.player_equipment_inventory_init.emit(equipment_inventory_component.inventory)
 
 func _process(delta):
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -34,5 +35,5 @@ func _on_inventory_component_inventory_changed():
 	Events.player_inventory_changed.emit()
 
 func _on_equipment_inventory_component_equipment_inventory_changed():
-	Events.player_equipment_inventory_changed.emit(equipment_inventory_component.inventory)
+	Events.player_equipment_inventory_changed.emit()
 	stats.set_stats(equipment_inventory_component.inventory.calculate_stats())
