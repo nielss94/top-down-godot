@@ -20,7 +20,7 @@ func add(item: Item):
 		if slot:
 			break
 
-		if s.item == item && s.item.stackable:
+		if s.item and s.item.name == item.name && s.item.stackable:
 			slot = s
 
 	if not slot:
@@ -41,7 +41,7 @@ func has_room_for(item: Item) -> bool:
 		if slot:
 			break
 
-		if s.item == item && s.item.stackable:
+		if s.item and s.item.name == item.name && s.item.stackable:
 			slot = s
 
 	if not slot:
