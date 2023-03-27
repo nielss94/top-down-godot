@@ -34,3 +34,23 @@ func add(item: Item):
 		return
 	
 	slot.add_item(item)
+
+func has_room_for(item: Item) -> bool:
+	var slot: Slot
+	for s in slots:
+		if slot:
+			break
+
+		if s.item == item && s.item.stackable:
+			slot = s
+
+	if not slot:
+		for s in slots:
+			if not s.item:
+				slot = s
+				break
+				
+	if not slot:
+		return false
+	
+	return true

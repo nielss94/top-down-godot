@@ -29,7 +29,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func pickup_item(item: Item):
-	inventory_component.add(item)
+	if inventory_component.has_room_for(item):
+		inventory_component.add(item)
+		Events.pickup_success.emit(item.unique_id)
 
 func _on_inventory_component_inventory_changed():
 	Events.player_inventory_changed.emit()

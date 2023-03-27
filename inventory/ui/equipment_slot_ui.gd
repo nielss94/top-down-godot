@@ -20,9 +20,11 @@ func set_equipment(equipment: Equipment):
 		texture_rect.texture = equipment.sprite
 		tooltip_text = "%s\n%s" % [equipment.name, equipment.description]
 		tooltip_text += "\nStr %s\nInt %s\nDex %s\nLuk %s" % [equipment.strength, equipment.intellect, equipment.dexterity, equipment.luck]		
+		tooltip_text += "\nUnique id: %s" % equipment.unique_id
 	else:
 		texture_rect.texture = null
 		tooltip_text = ""
+
 
 func _on_mouse_entered():
 	hovering = true;

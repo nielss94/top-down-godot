@@ -7,7 +7,9 @@ signal player_inventory_changed
 signal player_equipment_inventory_init(equipment_inventory: EquipmentInventory)
 signal player_equipment_inventory_changed
 
+signal pickup_success(unique_id)
 signal pickup_item(item)
+signal drop_item(item, position)
 signal enemy_died(position)
 
 

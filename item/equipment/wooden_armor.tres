@@ -14,3 +14,4 @@ name = "Wooden Armor"
 description = "It could defend you from a bully."
 sprite = ExtResource("2_gacb6")
 stackable = false
+unique_id = ""

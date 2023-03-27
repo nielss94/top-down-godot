@@ -9,4 +9,5 @@ name = "Paper"
 description = "A piece of paper."
 sprite = ExtResource("2_nh246")
 stackable = true
+unique_id = "blablablaaa"
 metadata/_editor_prop_ptr_sprite = NodePath("")
