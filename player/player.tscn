@@ -213,6 +213,7 @@ script = ExtResource("2_cmyyw")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("6_03vd4")
+luck = 50
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("7_wh1te")
@@ -224,5 +225,6 @@ inventory = ExtResource("8_6jwyj")
 script = ExtResource("9_ecgdn")
 inventory = ExtResource("10_a6p2x")
 
+[connection signal="hit_enemy" from="Whip" to="." method="_on_whip_hit_enemy"]
 [connection signal="inventory_changed" from="InventoryComponent" to="." method="_on_inventory_component_inventory_changed"]
 [connection signal="equipment_inventory_changed" from="EquipmentInventoryComponent" to="." method="_on_equipment_inventory_component_equipment_inventory_changed"]

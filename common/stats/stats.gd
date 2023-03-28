@@ -1,6 +1,8 @@
 extends Node
 class_name Stats
 
+@export var attack_power: int = 10
+
 @export var strength: int = 0
 @export var intellect: int = 0
 @export var dexterity: int = 0
@@ -11,6 +13,7 @@ func set_stats(stats: Stats) -> void:
 	intellect = stats.intellect
 	dexterity = stats.dexterity
 	luck = stats.luck
+	attack_power = stats.attack_power
 
 func with_strength(amount: int) -> Stats:
 	strength = amount

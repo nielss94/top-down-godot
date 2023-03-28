@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_u4h3l")
 type = 1
-strength = 10
+strength = 13
 intellect = 0
 dexterity = 15
 luck = 0

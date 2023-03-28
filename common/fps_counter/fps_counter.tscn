@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://btkac8jfrq1hd"]
+
+[ext_resource type="Script" path="res://common/fps_counter/fps_counter.gd" id="1_gtxwm"]
+[ext_resource type="FontFile" uid="uid://svtw3sprfuvn" path="res://font/Pixeled.ttf" id="1_ndur8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi138"]
+font = ExtResource("1_ndur8")
+font_size = 20
+
+[node name="FPSCounter" type="Label"]
+offset_right = 91.0
+offset_bottom = 59.0
+text = "0"
+label_settings = SubResource("LabelSettings_pi138")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_gtxwm")

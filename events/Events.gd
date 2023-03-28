@@ -10,6 +10,8 @@ signal player_equipment_inventory_changed
 signal pickup_success(unique_id)
 signal pickup_item(item)
 signal drop_item(item, position)
+
+signal enemy_took_damage(amount: int, critical: bool, position: Vector2)
 signal enemy_died(position)
 
 

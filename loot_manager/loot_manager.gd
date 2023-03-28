@@ -23,4 +23,4 @@ func drop_item(item: Item, position: Vector2):
 	var new_pickup = pickup.instantiate()
 	(new_pickup as PickUp).set_item(item);
 	new_pickup.position = position
-	get_tree().current_scene.add_child(new_pickup)
+	get_tree().current_scene.call_deferred("add_child", new_pickup)

@@ -26,7 +26,7 @@ func set_slot(slot: Slot):
 
 	tooltip_text += "\nUnique id: %s" % slot.item.unique_id
 	if slot.quantity > 1:
-		quantity_label.text = "x%s" % slot.quantity
+		quantity_label.text = "%s" % slot.quantity
 		quantity_label.show() 
 
 func _on_mouse_entered():

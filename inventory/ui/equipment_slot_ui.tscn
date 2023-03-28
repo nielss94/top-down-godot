@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvdaf0svbnm4"]
+[gd_scene load_steps=4 format=3 uid="uid://bgvdaf0svbnm4"]
 
 [ext_resource type="Script" path="res://inventory/ui/equipment_slot_ui.gd" id="1_sntij"]
+[ext_resource type="FontFile" uid="uid://svtw3sprfuvn" path="res://font/Pixeled.ttf" id="2_okngw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_evurr"]
+font = ExtResource("2_okngw")
+font_size = 10
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Slot" type="Panel"]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_sntij")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_right = 40.0
@@ -19,12 +28,14 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
 [node name="QuantityLabel" type="Label" parent="."]
 visible = false
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -35,6 +46,7 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+label_settings = SubResource("LabelSettings_evurr")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

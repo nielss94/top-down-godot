@@ -38,8 +38,9 @@ func _physics_process(delta):
 func set_target(target: Player):
 	self.target = target
 
-func take_damage(damage: int):
+func take_damage(damage: int, crit: bool):
 	health_component.lose(damage)
+	Events.enemy_took_damage.emit(damage, crit, position)
 
 func _on_area_2d_body_entered(body):
 	if body is Player:

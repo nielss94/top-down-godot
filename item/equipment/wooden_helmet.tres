@@ -6,11 +6,12 @@
 [resource]
 script = ExtResource("1_pd7i3")
 type = 0
-strength = 10
+strength = 5
 intellect = 0
-dexterity = 15
-luck = 0
+dexterity = 0
+luck = 25
 name = "Wooden Helmet"
 description = "It could defend you from a bully."
 sprite = ExtResource("2_q2mr3")
 stackable = false
+unique_id = ""

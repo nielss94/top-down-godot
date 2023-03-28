@@ -1,10 +1,15 @@
-extends Node2D
+class_name Whip extends Node2D
+
+signal hit_enemy(whip: Whip, enemy: Enemy)
 
 @onready var visual: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $WhipArea/CollisionShape2D
 
 var enemies_in_range: Array
 var nearestEnemy
+
+@export var attack_orientation: StatOrientation.Type
+@export var crit_orientation: StatOrientation.Type
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
@@ -26,18 +31,18 @@ func hit():
 	visual.show()
 	collision_shape.disabled = false;
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
 	
 	visual.hide()
 	collision_shape.disabled = true;
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(.4).timeout
 	
 	hit()
 
 func _on_area_2d_body_entered(body):
 	if body is Enemy:
-		body.take_damage(100)
+		hit_enemy.emit(self, body as Enemy)
 
 func _on_detection_area_body_entered(body):
 	if body is Enemy:

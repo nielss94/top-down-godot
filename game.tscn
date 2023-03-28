@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyccbofcnimhn"]
+[gd_scene load_steps=11 format=3 uid="uid://dyccbofcnimhn"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_kd3de"]
 [ext_resource type="PackedScene" uid="uid://bbxgg620b0mj2" path="res://levels/level.tscn" id="2_2rmmu"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://inventory/ui/inventory_interface.gd" id="5_oxxv8"]
 [ext_resource type="PackedScene" uid="uid://df8ndsa76tod4" path="res://inventory/ui/inventory_ui.tscn" id="6_jfxro"]
 [ext_resource type="PackedScene" uid="uid://julmk5r85rfi" path="res://loot_manager/loot_manager.tscn" id="7_a7vvf"]
+[ext_resource type="PackedScene" uid="uid://cqk1k8jqpvden" path="res://floating_text/floating_text_manager.tscn" id="9_vsfb0"]
+[ext_resource type="PackedScene" uid="uid://btkac8jfrq1hd" path="res://common/fps_counter/fps_counter.tscn" id="10_6jva6"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_kd3de")
@@ -37,6 +39,19 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 90.0
 
+[node name="FPSCounter" parent="UI" instance=ExtResource("10_6jva6")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -59.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="Player" parent="." instance=ExtResource("3_avnsc")]
 position = Vector2(44, 112)
 
@@ -51,3 +66,5 @@ position_smoothing_enabled = false
 position_smoothing_speed = 200.0
 
 [node name="LootManager" parent="." instance=ExtResource("7_a7vvf")]
+
+[node name="FloatingTextManager" parent="." instance=ExtResource("9_vsfb0")]
