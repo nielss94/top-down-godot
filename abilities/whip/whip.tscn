@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://abilities/whip/whip.gd" id="1_5603v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wys3"]
-size = Vector2(17, 7)
+size = Vector2(39, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ea04f"]
 radius = 28.0
@@ -14,7 +14,7 @@ script = ExtResource("1_5603v")
 crit_orientation = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
+scale = Vector2(2.33333, 2.33333)
 texture = ExtResource("1_3ysqa")
 hframes = 3
 vframes = 4
@@ -23,7 +23,7 @@ frame = 2
 [node name="WhipArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhipArea"]
-position = Vector2(8.5, 0.5)
+position = Vector2(19.5, 0.5)
 shape = SubResource("RectangleShape2D_8wys3")
 disabled = true
 debug_color = Color(0, 0.564706, 0.87451, 0.419608)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3c3xsylfnmmb"]
+[gd_scene load_steps=31 format=3 uid="uid://c3c3xsylfnmmb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_potau"]
 [ext_resource type="Script" path="res://player/player_animation.gd" id="2_cmyyw"]
@@ -8,8 +8,9 @@
 [ext_resource type="Script" path="res://inventory/inventory_component.gd" id="7_wh1te"]
 [ext_resource type="Resource" uid="uid://by8dus2qpdyx7" path="res://inventory/resource/inventory.tres" id="8_6jwyj"]
 [ext_resource type="Script" path="res://inventory/equipment_inventory_component.gd" id="9_ecgdn"]
-[ext_resource type="PackedScene" path="res://common/interaction/interaction_area.tscn" id="9_kllc7"]
+[ext_resource type="PackedScene" uid="uid://bqrio82fkd0e8" path="res://common/interaction/interaction_area.tscn" id="9_kllc7"]
 [ext_resource type="Resource" uid="uid://d624w3f62bem" path="res://inventory/resource/equipment_inventory.tres" id="10_a6p2x"]
+[ext_resource type="PackedScene" path="res://common/health/health_component.tscn" id="11_pu0l2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvxvg"]
 radius = 4.12311
@@ -224,6 +225,11 @@ inventory = ExtResource("8_6jwyj")
 script = ExtResource("9_ecgdn")
 inventory = ExtResource("10_a6p2x")
 
+[node name="HealthComponent" parent="." instance=ExtResource("11_pu0l2")]
+currentHealth = 30
+maxHealth = 100
+
 [connection signal="hit_enemy" from="Whip" to="." method="_on_whip_hit_enemy"]
 [connection signal="inventory_changed" from="InventoryComponent" to="." method="_on_inventory_component_inventory_changed"]
 [connection signal="equipment_inventory_changed" from="EquipmentInventoryComponent" to="." method="_on_equipment_inventory_component_equipment_inventory_changed"]
+[connection signal="health_zero" from="HealthComponent" to="." method="_on_health_component_health_zero"]

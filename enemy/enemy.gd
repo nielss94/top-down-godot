@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export var attack_power: int = 12
 @onready var navigation_agent = $NavigationAgent2D
 @export var sightRange = 20
 @export var speed = 20
@@ -50,3 +51,8 @@ func _on_area_2d_body_entered(body):
 func _on_health_component_health_zero():
 	Events.enemy_died.emit(position)
 	queue_free()
+
+
+func _on_attack_area_body_entered(body):
+	if body is Player:
+		(body as Player).take_damage(attack_power)

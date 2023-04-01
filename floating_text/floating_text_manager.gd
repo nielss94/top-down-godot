@@ -14,5 +14,4 @@ func enemy_took_damage(amount: int, critical: bool, position: Vector2):
 	new_floating_text.global_position = position
 	
 	add_child(new_floating_text)
-	print("crittttt %s" % critical)
 	new_floating_text.set_text(str(amount), damage_crit_color if critical else damage_color)

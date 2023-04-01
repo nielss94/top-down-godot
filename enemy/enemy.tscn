@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://0e1u6r7xp8e7"]
+[gd_scene load_steps=22 format=3 uid="uid://0e1u6r7xp8e7"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4rohj"]
 [ext_resource type="Texture2D" uid="uid://cwg6ufmbbr4a7" path="res://enemy/spawn.png" id="2_uqnmd"]
@@ -139,6 +139,8 @@ radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix52q"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_krae0"]
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_4rohj")
 sightRange = 100
@@ -174,15 +176,23 @@ parameters/run/blend_position = Vector2(-0.00174218, 0.00436687)
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_nppr8")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="VisionArea" type="Area2D" parent="."]
 scale = Vector2(20, 20)
 
-[node name="Circle" type="CollisionShape2D" parent="Area2D"]
+[node name="Circle" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource("CircleShape2D_ix52q")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_n1nmx")]
 currentHealth = 100
 maxHealth = 100
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="AttackArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_krae0")
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="health_zero" from="HealthComponent" to="." method="_on_health_component_health_zero"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyccbofcnimhn"]
+[gd_scene load_steps=12 format=3 uid="uid://dyccbofcnimhn"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_kd3de"]
 [ext_resource type="PackedScene" uid="uid://bbxgg620b0mj2" path="res://levels/level.tscn" id="2_2rmmu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://julmk5r85rfi" path="res://loot_manager/loot_manager.tscn" id="7_a7vvf"]
 [ext_resource type="PackedScene" uid="uid://cqk1k8jqpvden" path="res://floating_text/floating_text_manager.tscn" id="9_vsfb0"]
 [ext_resource type="PackedScene" uid="uid://btkac8jfrq1hd" path="res://common/fps_counter/fps_counter.tscn" id="10_6jva6"]
+[ext_resource type="PackedScene" uid="uid://b8pgvos07kirf" path="res://burger/burger.tscn" id="11_re2ua"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_kd3de")
@@ -68,3 +69,6 @@ position_smoothing_speed = 200.0
 [node name="LootManager" parent="." instance=ExtResource("7_a7vvf")]
 
 [node name="FloatingTextManager" parent="." instance=ExtResource("9_vsfb0")]
+
+[node name="Burger" parent="." instance=ExtResource("11_re2ua")]
+position = Vector2(348, 49)

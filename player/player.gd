@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var equipment_inventory_component: EquipmentInventoryComponent = $EquipmentInventoryComponent
 
 @onready var interaction_area: Interaction = $InteractionArea
+@onready var health_component: Health = $HealthComponent
 
 @onready var stats: Stats = $Stats
 
@@ -46,10 +47,8 @@ func _on_equipment_inventory_component_equipment_inventory_changed():
 func _on_whip_hit_enemy(whip: Whip, enemy: Enemy):
 	var power = stats.attack_power
 	
-	print(whip.attack_orientation)
 	match whip.attack_orientation:
 		StatOrientation.Type.Strength:
-			print("sttrrr")
 			power += stats.strength
 		StatOrientation.Type.Dexterity:
 			power += stats.dexterity
@@ -58,7 +57,6 @@ func _on_whip_hit_enemy(whip: Whip, enemy: Enemy):
 		StatOrientation.Type.Luck:
 			power += stats.luck
 
-	print ("power without crit %s" % power)
 	var crit_chance = 0
 	match whip.crit_orientation:
 		StatOrientation.Type.Strength:
@@ -70,7 +68,6 @@ func _on_whip_hit_enemy(whip: Whip, enemy: Enemy):
 		StatOrientation.Type.Luck:
 			crit_chance = clamp(stats.luck, 0, 100)
 
-	print ("crit chance %s" % crit_chance)
 	var is_crit = randi_range(0, 100) < crit_chance
 	if is_crit:
 		match whip.crit_orientation:
@@ -82,7 +79,16 @@ func _on_whip_hit_enemy(whip: Whip, enemy: Enemy):
 				power *= base_crit_multiplier + stats.intellect / 100
 			StatOrientation.Type.Luck:
 				power *= base_crit_multiplier + stats.luck / 100
-		print("power with crit %s" % power)
-	else:
-		print("no crit")
+
 	enemy.take_damage(power, is_crit)
+
+func heal(amount: int):
+	health_component.gain(amount)
+
+func take_damage(amount: int):
+	health_component.lose(amount)
+	Events.enemy_took_damage.emit(amount, false, position)
+	
+
+func _on_health_component_health_zero():
+	queue_free()
