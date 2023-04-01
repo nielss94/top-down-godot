@@ -213,7 +213,6 @@ script = ExtResource("2_cmyyw")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("6_03vd4")
-luck = 50
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("7_wh1te")
