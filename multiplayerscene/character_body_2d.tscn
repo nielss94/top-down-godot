@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://65e2rm52r15t"]
+
+[ext_resource type="Script" path="res://multiplayerscene/character_body_2d.gd" id="1_loq1v"]
+[ext_resource type="Texture2D" uid="uid://dc5ppc525rstl" path="res://player/orc_purple_16x24.png" id="1_mmaqn"]
+[ext_resource type="Script" path="res://multiplayerscene/MultiplayerSynchronizer.gd" id="3_g0r7b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02sbn"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_w5f3u"]
+properties/0/path = NodePath(".:direction")
+properties/0/spawn = true
+properties/0/sync = true
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_y5rfm"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:player_id")
+properties/1/spawn = true
+properties/1/sync = false
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_loq1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_02sbn")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_mmaqn")
+hframes = 3
+vframes = 4
+frame = 3
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+replication_config = SubResource("SceneReplicationConfig_w5f3u")
+script = ExtResource("3_g0r7b")
+
+[node name="ServerSync" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_y5rfm")
