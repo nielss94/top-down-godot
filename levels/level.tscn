@@ -11,6 +11,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(32, 24, 386, 25, 387, 2
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("3_66qso")]
+layer_1/name = "Layer1"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-9, -2)

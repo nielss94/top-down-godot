@@ -23,7 +23,6 @@ func _process(delta):
 		elif position.distance_to(enemy.global_position) < position.distance_to(nearestEnemy.global_position):
 			nearestEnemy = enemy
 
-
 func hit():
 	if nearestEnemy != null:
 		rotation = global_position.angle_to_point(nearestEnemy.global_position)

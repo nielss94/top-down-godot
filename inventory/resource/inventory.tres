@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=10 format=3 uid="uid://by8dus2qpdyx7"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=11 format=3 uid="uid://by8dus2qpdyx7"]
 
 [ext_resource type="Script" path="res://inventory/resource/inventory.gd" id="1_x3wa2"]
+[ext_resource type="Resource" uid="uid://bdqh2ld3geve0" path="res://item/equipment/wooden_helmet.tres" id="3_gqrsv"]
 [ext_resource type="Script" path="res://inventory/resource/slot.gd" id="3_nuit6"]
 [ext_resource type="Resource" uid="uid://b11nis3tjxwmt" path="res://item/items/paper.tres" id="4_78nfh"]
 
 [sub_resource type="Resource" id="Resource_7x3vj"]
 script = ExtResource("3_nuit6")
+item = ExtResource("3_gqrsv")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_ryriy"]
